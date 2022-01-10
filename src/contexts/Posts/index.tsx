@@ -9,10 +9,10 @@ const PostsContext = createContext<IPostsProviderData>(
 );
 
 export const PostsProvider = ({ children }: ContextProp) => {
-  const [posts, setPosts] = useState<IPosts[]>([]);
+  const [postsTeste, setPostsTeste] = useState<string>("");
   const reqPosts = async () => {
     const response = await api.get("/post");
-    setPosts(response.data);
+    setPostsTeste(response.data);
   };
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const PostsProvider = ({ children }: ContextProp) => {
   }, []);
 
   return (
-    <PostsContext.Provider value={{ reqPosts, posts }}>
+    <PostsContext.Provider value={{ reqPosts, postsTeste, setPostsTeste }}>
       {children}
     </PostsContext.Provider>
   );

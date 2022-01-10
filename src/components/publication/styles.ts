@@ -64,6 +64,13 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     width: 700px;
+    textarea{
+      width: 400px;
+      height: 50px;
+    }
+    button{
+      width: 150px;
+    }
   }
 
 

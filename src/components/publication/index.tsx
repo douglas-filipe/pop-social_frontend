@@ -5,28 +5,35 @@ import api from "../../services/api";
 import { useAuth } from "../../contexts/Auth";
 import { toast } from "react-toastify";
 import { useMenu } from "../../contexts/Menu";
+import { usePosts } from "../../contexts/Posts";
 
-export const Publication = () => {
+interface PublicationProps {
+  reqPosts: () => void;
+}
+
+export const Publication = ({ reqPosts }: PublicationProps) => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [textArea, setTextArea] = useState<any>(null);
   const { token } = useAuth();
-  const {setOpenMenu} = useMenu()
+  const { setOpenMenu } = useMenu();
+  const { setPostsTeste } = usePosts();
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("img", selectedFile);
     formData.append("description", textArea);
-    try{
+    try {
       await api.post("/post", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      toast.success("Postagem criada!")
-
-    }catch{
-      toast.error("Faça o login antes")
-      setOpenMenu(true)
+      toast.success("Postagem criada!");
+      setPostsTeste("novo");
+      reqPosts();
+    } catch {
+      toast.error("Faça o login antes");
+      setOpenMenu(true);
     }
   };
 

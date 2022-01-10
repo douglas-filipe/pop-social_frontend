@@ -2,6 +2,6 @@ import { IPosts } from "./Posts";
 
 export interface IPostsProviderData {
   reqPosts: () => void;
-  posts: any
-
+  postsTeste: string;
+  setPostsTeste: (data: string) => void;
 }
