@@ -8,7 +8,6 @@
  
 </p>
 
-
 # Tabela de conteúdos
 
 <!--ts-->
@@ -19,7 +18,6 @@
 - [Como executar o projeto](#-como-executar-o-projeto)
   - [Pré-requisitos](#pré-requisitos)
 - [Tecnologias](#-tecnologias)
-  - [WebSite](#user-content-website--react----typescript)
 - [Autor](#-autor)
 - [Licença](#user-content--licença)
 <!--te-->
@@ -80,7 +78,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 #### **Website** ([React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/))
 
 - **[React Icons](https://react-icons.github.io/react-icons/)**
-- **[Axios](https://github.com/axios/axios)**
 - **[Axios](https://github.com/axios/axios)**
 - **[Styled Components](https://styled-components.com/)**
 - **[Moment](https://momentjs.com/)**
