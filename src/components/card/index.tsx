@@ -1,11 +1,14 @@
 import { Container } from "./styles";
 import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi";
 import api from "../../services/api";
 import { useAuth } from "../../contexts/Auth";
 import { useMenu } from "../../contexts/Menu";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import moment from "moment";
+import { Options } from "../options";
 
 interface Iprops {
   imgUrl: string;
@@ -16,6 +19,8 @@ interface Iprops {
   id_user: string;
   token: string;
   posts: () => void;
+  createdAt: string;
+  id_user_post: string;
 }
 
 export const Card = ({
@@ -27,13 +32,14 @@ export const Card = ({
   id_user,
   token,
   posts,
+  createdAt,
+  id_user_post,
 }: Iprops) => {
   const { setToken, setUserId } = useAuth();
   const { setOpenMenu } = useMenu();
   const likePost = async (id: string, token: string) => {
     const teste = "";
     likes.push(id);
-    console.log(likes);
     try {
       await api.put(
         `/post/like/${id}`,
@@ -57,11 +63,48 @@ export const Card = ({
     }
   };
 
+  const formatData = (date: String) => {
+    const data = moment(date as string).format("DD/MM/YYYY");
+    return data;
+  };
+
+  const [visible, setVisible] = useState<boolean>(false);
+
   return (
     <Container>
+      <Options
+        visible={visible}
+        id={id}
+        posts={posts}
+        setVisible={setVisible}
+      />
+
       <div className="Image">
-        <header className="User"></header>
-        <p>{description ? description : ""}</p>
+        <header className="Header">
+          <div className="User">
+            <div className="Photo">{author?.substring(0, 1)}</div>
+            <div className="NameAuthorDate">
+              <span>{author}</span>
+              <span>{formatData(createdAt)}</span>
+            </div>
+          </div>
+          {id_user_post === id_user ? (
+            <>
+              {visible ? (
+                <div className="Options" onClick={() => setVisible(false)}>
+                  <FiMoreHorizontal />
+                </div>
+              ) : (
+                <div className="Options" onClick={() => setVisible(true)}>
+                  <FiMoreHorizontal />
+                </div>
+              )}
+            </>
+          ) : (
+            <></>
+          )}
+        </header>
+        <p className="Description">{description ? description : ""}</p>
         {imgUrl ? <img src={imgUrl} alt="Post" /> : <span></span>}
         <div className="QuantityLikes">
           {likes.length > 0 ? (

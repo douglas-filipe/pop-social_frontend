@@ -1,46 +1,108 @@
-# Getting Started with Create React App
+<h1 align="center">
+     <a href="#" alt="site do ecoleta"> Pop - Social Network </a>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">
+   Uma aplicação que simula postagens de uma rede social
+</h3>
+ 
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
+# Tabela de conteúdos
 
-### `yarn start`
+<!--ts-->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Sobre o projeto](#-sobre-o-projeto)
+- [Funcionalidades](#-funcionalidades)
+- [Layout](#-layout)
+- [Como executar o projeto](#-como-executar-o-projeto)
+  - [Pré-requisitos](#pré-requisitos)
+- [Tecnologias](#-tecnologias)
+  - [WebSite](#user-content-website--react----typescript)
+- [Autor](#-autor)
+- [Licença](#user-content--licença)
+<!--te-->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 💻 Sobre o projeto
 
-### `yarn test`
+Pop - É um projeto para mostrar como poderia funcionar as funcionalidade de likes e postagem da redes sociais.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `yarn build`
+## ⚙️ Funcionalidades
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Usuários podem se cadastrar e logar
+- [x] Criação de postagem
+- [x] Exclusão de postagens
+- [x] Curtidas em postagem
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🎨 Layout
 
-### `yarn eject`
+O layout da aplicação está disponível no Figma:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🚀 Como executar o projeto
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Pré-requisitos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 🧭 Rodando a aplicação web (Frontend)
 
-## Learn More
+```bash
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Clone este repositório
+$ git clone https://github.com/douglas-filipe/pop-social_frontend.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd pop-social_frontend
+
+# Instale as dependências
+$ yarn
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn start
+
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+
+```
+
+---
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+#### **Website** ([React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/))
+
+- **[React Icons](https://react-icons.github.io/react-icons/)**
+- **[Axios](https://github.com/axios/axios)**
+- **[Axios](https://github.com/axios/axios)**
+- **[Styled Components](https://styled-components.com/)**
+- **[Moment](https://momentjs.com/)**
+- **[React Toastify](https://fkhadra.github.io/react-toastify/)**
+- **[React Spinners](https://www.davidhu.io/react-spinners/)**
+
+## 🦸 Autor
+
+<a href="https://github.com/douglas-filipe">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/61639919?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Douglas Filipe</b></sub></a> <a href="https://github.com/douglas-filipe" title="Author">🚀</a>
+ <br />
+
+[![Linkedin Badge](https://img.shields.io/badge/-Douglas-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/douglas-filipe-santos/)](https://www.linkedin.com/in/douglas-filipe-santos/)
+
+---
+
+## 📝 Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
+
+Feito com ❤️ por Douglas Filipe 👋🏽 [Entre em contato!](https://www.linkedin.com/in/douglas-filipe-santos/)
+
+---

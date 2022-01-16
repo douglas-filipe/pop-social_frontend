@@ -6,9 +6,6 @@ import { Publication } from "../publication";
 import { FadeLoader } from "react-spinners";
 import { Container } from "./styles";
 import { useAuth } from "../../contexts/Auth";
-interface Idecoded {
-  _id: string;
-}
 
 export const Cards = () => {
   const { token } = useAuth();
@@ -46,6 +43,8 @@ export const Cards = () => {
                 id_user={userId ? userId : ""}
                 token={token}
                 posts={reqPosts}
+                createdAt={item.createdAt}
+                id_user_post={item.author._id}
               />
             );
           })}

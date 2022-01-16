@@ -5,7 +5,6 @@ import api from "../../services/api";
 import { useAuth } from "../../contexts/Auth";
 import { toast } from "react-toastify";
 import { useMenu } from "../../contexts/Menu";
-import { usePosts } from "../../contexts/Posts";
 import { ScaleLoader } from "react-spinners";
 
 interface PublicationProps {

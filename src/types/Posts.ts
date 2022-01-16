@@ -7,4 +7,5 @@ export interface IPosts {
     name: string;
   };
   likes: [];
+  createdAt: string
 }

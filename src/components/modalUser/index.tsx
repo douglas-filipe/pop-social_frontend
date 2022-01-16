@@ -6,11 +6,14 @@ import { Container } from "./styles";
 
 export const ModalUser = () => {
   const { openMenu, setOpenMenu } = useMenu();
-  const { token, setToken } = useAuth();
-  const Logout = () => {
+  const { token, setToken, setUserId } = useAuth();
+  const Logout = async () => {
+    await localStorage.removeItem("@pop/userId");
+    await localStorage.removeItem("@pop/token");
     setToken("");
-    localStorage.removeItem("@pop/token");
-    setOpenMenu(false)
+    setUserId("");
+    setOpenMenu(false);
+    window.location.reload();
   };
   return (
     <Container openMenu={openMenu}>

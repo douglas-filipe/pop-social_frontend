@@ -10,29 +10,72 @@ export const Container = styled.div`
   margin: 10px auto;
   border-radius: 10px;
   position: relative;
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+    .Options{
+      cursor: pointer;
+      
+      svg{
+        width: 25px;
+        height: 25px;
+        color: white;
+      }
+    }
+    .User {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .NameAuthorDate {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        color: white;
+        span:nth-child(2) {
+          color: #ffffff88;
+        }
+      }
+      .Photo {
+        width: 50px;
+        height: 50px;
+        background: #4538ff;
+        color: white;
+        border-radius: 50%;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 50px;
+        text-align: center;
+      }
+    }
+  }
 
-  .QuantityLikes{
+  .QuantityLikes {
     width: 150px;
     height: 10px;
     padding: 10px 0;
     display: flex;
     gap: 5px;
     color: white;
-    svg{
+    svg {
       color: white;
       width: 15px;
       height: 15px;
-      
     }
   }
 
-  h1{
+  .Description {
+  }
+
+  h1 {
     padding: 10px 0;
     color: white;
     text-align: center;
   }
 
-  p{
+  p {
     color: white;
     padding: 10px 0;
   }
@@ -45,7 +88,7 @@ export const Container = styled.div`
     }
   }
 
-  .CardEmoticons{
+  .CardEmoticons {
     position: absolute;
     width: 250px;
     height: 60px;

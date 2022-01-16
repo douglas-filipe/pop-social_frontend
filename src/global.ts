@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background: #030C11;
 	overflow-x: hidden;
-    
+	-webkit-tap-highlight-color: transparent;
     width: 100vw;
   }
   html{
