@@ -50,8 +50,8 @@ export const Publication = ({ reqPosts }: PublicationProps) => {
   };
   const [imageName, setImageName] = useState<string>("");
   return (
-    <Container>
-      <h1>Criar publicação</h1>
+    <Container className="disable-select">
+      <h1 className="disable-select">Criar publicação</h1>
       <form onSubmit={handleSubmit} id="form">
         <div>
           <textarea

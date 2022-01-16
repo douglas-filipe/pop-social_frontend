@@ -16,10 +16,10 @@ export const ModalUser = () => {
     window.location.reload();
   };
   return (
-    <Container openMenu={openMenu}>
+    <Container openMenu={openMenu} className="disable-select">
       {token ? (
         <div className="Logado">
-          <p>Bem vindo</p>
+          <p className="disable-select">Bem vindo</p>
           <div onClick={Logout}>
             <HiLogout /> Sair
           </div>
