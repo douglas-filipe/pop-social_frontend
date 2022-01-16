@@ -1,4 +1,3 @@
-import { report } from "process";
 import GoogleLogin from "react-google-login";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/Auth";
@@ -6,7 +5,7 @@ import { useMenu } from "../../contexts/Menu";
 import api from "../../services/api";
 
 const clientId =
-  "748847660432-0ami3kf5cho790k0nllpq3mkafar58u8.apps.googleusercontent.com";
+  "339792488943-f2ubcchdn05gaoar412j38qcsoeuof58.apps.googleusercontent.com";
 
 interface IgoogleProps {
   login: boolean;
