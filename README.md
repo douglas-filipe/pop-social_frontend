@@ -39,7 +39,9 @@ Pop - É um projeto para mostrar como poderia funcionar as funcionalidade de lik
 
 ## 🎨 Layout
 
-<img src="src/assets/layout-pop.gif" alt="Layout" width="600px"/>
+<video width="500px" controls>
+  <source src="src/assets/layout-pop-novo.mp4" type="video/mp4">
+</video>
 
 ## 🚀 Como executar o projeto
 
