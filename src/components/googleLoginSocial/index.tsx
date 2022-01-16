@@ -52,8 +52,11 @@ export const GoogleLoginSocial = ({ login }: IgoogleProps) => {
         email,
       });
       const token = await response.data.token;
+      const user_id = await response.data._id;
       await setToken(token);
+      await setUserId(user_id);
       await localStorage.setItem("@pop/token", token);
+      await localStorage.setItem("@pop/userId", user_id);
       await toast.success("Você conseguiu entrar!");
       setOpenMenu(false);
     } catch (error) {
