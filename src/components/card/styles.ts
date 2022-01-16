@@ -11,6 +11,21 @@ export const Container = styled.div`
   border-radius: 10px;
   position: relative;
 
+  .QuantityLikes{
+    width: 150px;
+    height: 10px;
+    padding: 10px 0;
+    display: flex;
+    gap: 5px;
+    color: white;
+    svg{
+      color: white;
+      width: 15px;
+      height: 15px;
+      
+    }
+  }
+
   h1{
     padding: 10px 0;
     color: white;
@@ -38,6 +53,7 @@ export const Container = styled.div`
   }
 
   .Reaction {
+    cursor: pointer;
     margin-top: 10px;
     display: flex;
     justify-content: center;

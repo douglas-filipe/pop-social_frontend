@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-import { AuthProviderData, ContextProp } from "../../types/AuthContext";
-import { IPosts } from "../../types/Posts";
+import { ContextProp } from "../../types/AuthContext";
 import { IPostsProviderData } from "../../types/PostsProviderData";
 
 const PostsContext = createContext<IPostsProviderData>(

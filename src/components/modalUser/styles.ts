@@ -24,4 +24,33 @@ export const Container = styled.div<ImenuProps>`
     font-size: 1.2rem;
     margin: 20px;
   }
+
+  .Logado{
+    color: white;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    p{
+      font-size: 18px;
+    }
+    >div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      &:hover{
+        border-bottom: 1px solid #1470c7;
+      }
+
+      svg{
+        color: #c83d3d;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
 `;

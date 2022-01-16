@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
-import { usePosts } from "../../contexts/Posts";
 import api from "../../services/api";
 import { IPosts } from "../../types/Posts";
 import { Card } from "../card";
 import { Publication } from "../publication";
 import { FadeLoader } from "react-spinners";
 import { Container } from "./styles";
+import { useAuth } from "../../contexts/Auth";
+interface Idecoded {
+  _id: string;
+}
 
 export const Cards = () => {
+  const { token } = useAuth();
   const [posts, setPosts] = useState<IPosts[]>([]);
+  const { userId } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -16,7 +21,6 @@ export const Cards = () => {
       await reqPosts();
       setLoading(true);
     };
-
     reqLoading();
   }, []);
 
@@ -37,6 +41,11 @@ export const Cards = () => {
                 imgUrl={item.imgUrl}
                 author={item.author.name}
                 description={item.description}
+                id={item._id}
+                likes={item.likes}
+                id_user={userId ? userId : ""}
+                token={token}
+                posts={reqPosts}
               />
             );
           })}

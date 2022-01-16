@@ -1,3 +1,4 @@
+import { report } from "process";
 import GoogleLogin from "react-google-login";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/Auth";
@@ -12,8 +13,8 @@ interface IgoogleProps {
 }
 
 export const GoogleLoginSocial = ({ login }: IgoogleProps) => {
-  const { setToken } = useAuth();
-  const {setOpenMenu} = useMenu()
+  const { setToken, setUserId } = useAuth();
+  const { setOpenMenu } = useMenu();
 
   const responseGoogleLogin = async (response: any) => {
     const {
@@ -25,12 +26,15 @@ export const GoogleLoginSocial = ({ login }: IgoogleProps) => {
         email,
       });
       const token = await response.data.token;
+      const user_id = await response.data._id;
       await setToken(token);
+      await setUserId(user_id);
       await localStorage.setItem("@pop/token", token);
-      await toast.success("Você conseguiu entrar!")
-      setOpenMenu(false)
+      await localStorage.setItem("@pop/userId", user_id);
+      await toast.success("Você conseguiu entrar!");
+      setOpenMenu(false);
     } catch (error) {
-      console.log("error");
+      toast.error("Conta google não vinculada");
     }
   };
 
@@ -51,10 +55,10 @@ export const GoogleLoginSocial = ({ login }: IgoogleProps) => {
       const token = await response.data.token;
       await setToken(token);
       await localStorage.setItem("@pop/token", token);
-      await toast.success("Você conseguiu entrar!")
-      setOpenMenu(false)
+      await toast.success("Você conseguiu entrar!");
+      setOpenMenu(false);
     } catch (error) {
-      console.log("Error");
+      toast.error("Conta google já cadastrada!");
     }
   };
 

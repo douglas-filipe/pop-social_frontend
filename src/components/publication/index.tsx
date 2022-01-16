@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/Auth";
 import { toast } from "react-toastify";
 import { useMenu } from "../../contexts/Menu";
 import { usePosts } from "../../contexts/Posts";
+import { ScaleLoader } from "react-spinners";
 
 interface PublicationProps {
   reqPosts: () => void;
@@ -13,11 +14,12 @@ interface PublicationProps {
 
 export const Publication = ({ reqPosts }: PublicationProps) => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
-  const [textArea, setTextArea] = useState<any>(null);
-  const { token } = useAuth();
+  const [textArea, setTextArea] = useState<string>("");
+  const [sendLoading, setSendLoading] = useState<boolean>(false);
+  const { token, setToken, setUserId } = useAuth();
   const { setOpenMenu } = useMenu();
-  const { setPostsTeste } = usePosts();
   const handleSubmit = async (event: any) => {
+    setSendLoading(true);
     event.preventDefault();
     const formData = new FormData();
     formData.append("img", selectedFile);
@@ -28,36 +30,50 @@ export const Publication = ({ reqPosts }: PublicationProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
+
       toast.success("Postagem criada!");
-      setPostsTeste("novo");
+      setSendLoading(false);
       reqPosts();
     } catch {
+      setSendLoading(false);
       toast.error("Faça o login antes");
+      setToken("");
       setOpenMenu(true);
+      await setUserId("");
+      localStorage.removeItem("@pop/token");
+      await localStorage.removeItem("@pop/userId");
     }
   };
 
   const handleFileSelect = (event: any) => {
     setSelectedFile(event.target.files[0]);
+    setImageName(event.target.files[0].name);
   };
-
+  const [imageName, setImageName] = useState<string>("");
   return (
     <Container>
       <h1>Criar publicação</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="form">
         <div>
           <textarea
+            required={true}
             placeholder="No que você está pensando?"
             onChange={(e) => setTextArea(e.target.value)}
           ></textarea>
         </div>
         <label htmlFor="photo" className="File">
           <HiPhotograph />
-          Enviar Foto
+          <span>{imageName ? imageName : "Enviar foto"}</span>
         </label>
         <input type="file" id="photo" onChange={handleFileSelect} />
 
-        <button type="submit">Publicar</button>
+        <button type="submit" disabled={sendLoading}>
+          {sendLoading ? (
+            <ScaleLoader color="white" height={"15px"} />
+          ) : (
+            <>Publicar</>
+          )}
+        </button>
       </form>
     </Container>
   );

@@ -38,8 +38,10 @@ export const Container = styled.div`
   }
 
   .File{
+      cursor: pointer;
       color: white;
       display: flex;
+      flex-direction: column;
       gap: 5px;
       justify-content: center;
       align-items: center;
@@ -52,7 +54,8 @@ export const Container = styled.div`
 
   button{
       width: 100px;
-      padding: 10px;
+      padding: 5px;
+      height: 40px;
       background: #1b5cd4;
       color: white;
       border: none;

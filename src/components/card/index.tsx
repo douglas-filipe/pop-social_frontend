@@ -1,53 +1,91 @@
 import { Container } from "./styles";
-//import { AiFillLike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
 import { AiOutlineLike } from "react-icons/ai";
-import { Reactions } from "../reactions";
-import { useCallback, useState } from "react";
-import { useLongPress, LongPressDetectEvents } from "use-long-press";
-import { IPosts } from "../../types/Posts";
+import api from "../../services/api";
+import { useAuth } from "../../contexts/Auth";
+import { useMenu } from "../../contexts/Menu";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 interface Iprops {
   imgUrl: string;
-  author: string;
+  author: string | undefined;
   description: string;
+  id: string;
+  likes: string[];
+  id_user: string;
+  token: string;
+  posts: () => void;
 }
 
-export const Card = ({ imgUrl, author, description }: Iprops) => {
-  const enabled = true;
-  const callback = useCallback(() => {}, []);
-  const bind = useLongPress(enabled ? callback : null, {
-    onStart: () => console.log("Press started"),
-    onFinish: () => {
-      console.log("Long press finished");
-      //setVisible(false);
-    },
-    onCancel: () => console.log("Press cancelled"),
-    //onMove: () => console.log("Detected mouse or touch movement"),
-    threshold: 500,
-    captureEvent: true,
-    cancelOnMovement: false,
-    detect: LongPressDetectEvents.BOTH,
-  });
+export const Card = ({
+  imgUrl,
+  author,
+  description,
+  id,
+  likes,
+  id_user,
+  token,
+  posts,
+}: Iprops) => {
+  const { setToken, setUserId } = useAuth();
+  const { setOpenMenu } = useMenu();
+  const likePost = async (id: string, token: string) => {
+    const teste = "";
+    likes.push(id);
+    console.log(likes);
+    try {
+      await api.put(
+        `/post/like/${id}`,
+        { teste },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      posts();
+    } catch {
+      await posts();
+      await setToken("");
+      await setUserId("");
+      await localStorage.removeItem("@pop/token");
+      await localStorage.removeItem("@pop/userId");
+      await setOpenMenu(true);
+
+      toast.error("Faça o login");
+    }
+  };
 
   return (
     <Container>
       <div className="Image">
-        <h1>Enviado por {author}</h1>
+        <header className="User"></header>
         <p>{description ? description : ""}</p>
-        <img src={imgUrl} alt="Teste" />
+        {imgUrl ? <img src={imgUrl} alt="Post" /> : <span></span>}
+        <div className="QuantityLikes">
+          {likes.length > 0 ? (
+            <>
+              <AiFillLike />
+              <span>{likes.length}</span>
+            </>
+          ) : (
+            <span></span>
+          )}
+        </div>
       </div>
-      <div className="Reaction" onClick={() => console.log("clikou")}>
-        <AiOutlineLike />
-        <span>Curtir</span>
-      </div>
+
+      {likes.includes(id_user) ? (
+        <div className="Reaction" onClick={() => likePost(id, token)}>
+          <AiFillLike />
+          <span>Curtir</span>
+        </div>
+      ) : (
+        <div className="Reaction" onClick={() => likePost(id, token)}>
+          <AiOutlineLike />
+          <span>Curtir</span>
+        </div>
+      )}
     </Container>
   );
 };
-
-/**
- * 
- * <div onMouseLeave={() => setVisible(false)} className="CardEmoticons">
-        <Reactions visible={visible} />
-      </div>
- * 
- */
