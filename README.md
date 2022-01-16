@@ -39,7 +39,7 @@ Pop - É um projeto para mostrar como poderia funcionar as funcionalidade de lik
 
 ## 🎨 Layout
 
-O layout da aplicação está disponível no Figma:
+<img src="src/assets/layout-pop.gif" alt="Layout" width="600px"/>
 
 ## 🚀 Como executar o projeto
 
