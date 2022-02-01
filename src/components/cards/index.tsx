@@ -21,11 +21,11 @@ export const Cards = () => {
     reqLoading();
   }, []);
 
+
   const reqPosts = async () => {
     const response = await api.get("/post");
     setPosts(response.data);
   };
-
   return (
     <Container>
       <Publication reqPosts={reqPosts} />

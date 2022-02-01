@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import moment from "moment";
 import { Options } from "../options";
+import jwt_decode from "jwt-decode";
 
 interface Iprops {
   imgUrl: string;
@@ -21,6 +22,10 @@ interface Iprops {
   posts: () => void;
   createdAt: string;
   id_user_post: string;
+}
+
+interface Itoken {
+  _id: string;
 }
 
 export const Card = ({
@@ -38,8 +43,37 @@ export const Card = ({
   const { setToken, setUserId } = useAuth();
   const { setOpenMenu } = useMenu();
   const likePost = async (id: string, token: string) => {
+    const decoded: Itoken = jwt_decode(token);
+    const { _id } = decoded;
     const teste = "";
-    likes.push(id);
+    likes.push(_id)
+
+    try {
+      await api.put(
+        `/post/like/${id}`,
+        { teste },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      posts();
+    } catch {
+      await posts();
+      await setToken("");
+      await setUserId("");
+      await localStorage.removeItem("@pop/token");
+      await localStorage.removeItem("@pop/userId");
+      await setOpenMenu(true);
+
+      toast.error("Faça o login");
+    }
+  };
+
+  const deslikePost = async (id: string, token: string) => {
+    const teste = "";
+
     try {
       await api.put(
         `/post/like/${id}`,
@@ -119,7 +153,7 @@ export const Card = ({
       </div>
 
       {likes.includes(id_user) ? (
-        <div className="Reaction" onClick={() => likePost(id, token)}>
+        <div className="Reaction" onClick={() => deslikePost(id, token)}>
           <AiFillLike />
           <span>Curtir</span>
         </div>
