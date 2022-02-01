@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://52.67.153.57:3000",
+  baseURL: "https://pop-social-api.herokuapp.com",
 });
 
 export default api;
