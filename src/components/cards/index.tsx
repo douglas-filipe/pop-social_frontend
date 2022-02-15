@@ -6,6 +6,7 @@ import { Publication } from "../publication";
 import { FadeLoader } from "react-spinners";
 import { Container } from "./styles";
 import { useAuth } from "../../contexts/Auth";
+import io from "socket.io-client";
 
 export const Cards = () => {
   const { token } = useAuth();
@@ -21,6 +22,18 @@ export const Cards = () => {
     reqLoading();
   }, []);
 
+  useEffect(() => {
+    const socket = io("ws://localhost:3003");
+    socket.on("connnection", () => {
+      console.log("connected to server");
+    });
+    socket.on("create-post", (newPosts) => {
+      setPosts(newPosts);
+    });
+    socket.on("like_post", (newPosts) => {
+      setPosts(newPosts);
+    });
+  }, []);
 
   const reqPosts = async () => {
     const response = await api.get("/post");

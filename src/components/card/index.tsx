@@ -46,7 +46,7 @@ export const Card = ({
     const decoded: Itoken = jwt_decode(token);
     const { _id } = decoded;
     const teste = "";
-    likes.push(_id)
+    likes.push(_id);
 
     try {
       await api.put(
