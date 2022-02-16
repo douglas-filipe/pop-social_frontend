@@ -30,6 +30,9 @@ export const Cards = () => {
     socket.on("create-post", (newPosts) => {
       setPosts(newPosts);
     });
+    socket.on("delete-post", (newPosts) => {
+      setPosts(newPosts);
+    });
     socket.on("like_post", (newPosts) => {
       setPosts(newPosts);
     });
