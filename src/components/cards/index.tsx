@@ -6,7 +6,7 @@ import { Publication } from "../publication";
 import { FadeLoader } from "react-spinners";
 import { Container } from "./styles";
 import { useAuth } from "../../contexts/Auth";
-import io from "socket.io-client";
+import { io } from "socket.io-client";
 
 export const Cards = () => {
   const { token } = useAuth();
@@ -23,7 +23,7 @@ export const Cards = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io("ws://localhost:3003");
+    const socket = io("https://pop-social-api.herokuapp.com");
     socket.on("connnection", () => {
       console.log("connected to server");
     });

@@ -6,8 +6,6 @@ import { useAuth } from "../../contexts/Auth";
 import { toast } from "react-toastify";
 import { useMenu } from "../../contexts/Menu";
 import { ScaleLoader } from "react-spinners";
-import io from "socket.io-client";
-const socket = io("ws://localhost:3000");
 
 interface PublicationProps {
   reqPosts: () => void;
